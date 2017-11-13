@@ -21,19 +21,9 @@ Note: The last line has 0 spaces before it.
 
 
 def StairCase(n):
-	for i in range(1,n+1):
-		stair_array = []
-		j = 1
-		while(j <= n):
-			if(j <= i):
-				stair_array.append('#')
-			else:
-				stair_array.append(' ')
-			j = j + 1
-		
-		reversed_array = list(reversed(stair_array))
-		for element in reversed_array:
-			print(element),
-		print
+    for i in range(1, n + 1):
+        print ' '*(n-i) + '#'*i
+
+
 _n = int(raw_input().strip("\n"))
 StairCase(_n)
