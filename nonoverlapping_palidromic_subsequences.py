@@ -32,29 +32,28 @@ You can select A="ababa" and B="ekske". The product is 5*5=25. Another
 possible solution is A="ababa" and B="ekqke" which also gives 25.
 """
 from itertools import combinations
-def get_combination(string):
-	string_array = []
-	for y in range(len(string)-1,1,-1):
-		for x in combinations(string,y):
-			if ''.join(x)==''.join(x)[::-1]:
-				string_array.append(''.join(x))
-				break
-	return string_array
 def funPal(string):
-	palindrome_len = []
-	for i in range(0, len(string)):
-		str1_array = []
-		str2_array = []
-		string1 = string[:i]
-		string2 = string[i:]
-		str1_array = get_combination(string1)
-		str2_array = get_combination(string2)
-		if str1_array and str2_array:
-			print str1_array[0], "\t", str2_array[0]
-			palindrome_len.append(len(str1_array[0]) * len(str2_array[0]))
-	return max(palindrome_len)
-		
+	C=1
+	for j in range(len(string)+1):
+		str1=string[j:]
+		str2=string[:j]
+		c1=1
+		c2=1
+		for i in range(len(str1)+1,1,-1):
+			if c1==1:
+				for x in combinations(str1,i):
+					if x==x[::-1]:
+						c1=max(c1,len(x))
+						break
+		for i in range(len(str2)+1,1,-1):
+			if c2==1:
+				for x in combinations(str2,i):
+					if x==x[::-1]:
+						c2=max(c2,len(x))
+						break
+		if C<c1*c2:
+			C=c1*c2
+	return C
 _s = raw_input()
 res = funPal(_s);
 print res
-
