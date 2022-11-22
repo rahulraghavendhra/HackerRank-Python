@@ -31,6 +31,17 @@ def pangram(string):
         if i not in ascii_array:
             return 'Not Pangram'
     return 'Pangram'
+
+def pangrams(s):
+    # Write your code here
+    s = s.split(' ')
+    s = set("".join(s).lower())
+
+    if s == set('abcdefghijklmnopqrstuvwxyz'):
+        return 'pangram'
+
+    return 'not pangram'
+
     
 if __name__ == '__main__':
     input_string = raw_input()
